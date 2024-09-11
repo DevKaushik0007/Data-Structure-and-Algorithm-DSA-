@@ -118,6 +118,7 @@ class List{
         cout<<endl;
     }
 
+// SEARCH RECURSIVELY :-
 
     int helper(Node* h,int key){
         if(h == NULL){
@@ -147,6 +148,25 @@ class List{
         }
         head = prev;
     }
+    int getSize(){
+        int sz = 0;
+        Node* temp = head;
+        while(temp!=NULL){
+            temp = temp->next;
+            sz++;
+        }
+        return sz;
+    }
+    void removeNth(int n){
+        int size = getSize();
+        Node* prev = head;
+        for(int i = 1; i < (size - n); i++){
+            prev = prev->next; 
+        }
+        Node* toDel = prev->next;
+        cout<<"deleted element is: "<<toDel->data<<endl;
+        prev->next = prev->next->next;
+    }
     
 };
 
@@ -159,17 +179,19 @@ int main(){
     ll.push_Front(1);
     ll.push_Back(4);
     ll.push_Back(5);
-    ll.insert_Middle(200,3);
+    // ll.insert_Middle(200,3);
     ll.printList();
-    ll.pop_Front();
-    ll.pop_Back();
-    cout<<"After pop data from head and tail"<<endl;
-    ll.printList();
-    cout<<"Enter the element to be search: ";
-    cin>>key;
-    cout<<ll.searchRec(key)<<endl;
-    cout<<"Linked List in Reverse Order:"<<endl;
-    ll.reverse();
+    // ll.pop_Front();
+    // ll.pop_Back();
+    // cout<<"After pop data from head and tail"<<endl;
+    // ll.printList();
+    // cout<<"Enter the element to be search: ";
+    // cin>>key;
+    // cout<<ll.searchRec(key)<<endl;
+    // cout<<"Linked List in Reverse Order:"<<endl;
+    // ll.reverse();
+    // ll.printList();
+    ll.removeNth(4);
     ll.printList();
     return 0;
 }
